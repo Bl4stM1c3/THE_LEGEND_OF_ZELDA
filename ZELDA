@@ -1,0 +1,41 @@
+#Posible solucion al ejercicio 38 de https://retosdeprogramacion.com/ejercicios/
+#* ¡Han anunciado un nuevo "The Legend of Zelda"!
+# * Se llamará "Tears of the Kingdom" y se lanzará el 12 de mayo de 2023.
+# * Pero, ¿recuerdas cuánto tiempo ha pasado entre los distintos
+# * "The Legend of Zelda" de la historia?
+# * Crea un programa que calcule cuántos años y días hay entre 2 juegos de Zelda
+# * que tú selecciones.
+# * - Debes buscar cada uno de los títulos y su día de lanzamiento 
+# *   (si no encuentras el día exacto puedes usar el mes, o incluso inventártelo)
+
+
+import datetime
+
+#Calculamos el tiempo transcurrido entre el lanzamiento de Zelda
+def zelda(juego1, juego2):
+  
+  #Convertimos la fecha introducida en formato str a int "10-10-2010" -> [10,10,2010]
+  fecha1 = list(map(int, juego1[1].split('-')))
+  fecha2 = list(map(int, juego2[1].split('-')))
+
+  fecha1 = datetime.datetime(fecha1[2], fecha1[1], fecha1[0])
+  fecha2 = datetime.datetime(fecha2[2], fecha2[1], fecha2[0])
+
+  diferencia = fecha2 - fecha1
+
+  diferencia_años = diferencia.days//365
+  diferencia_dias = diferencia.days%365
+
+  return f"Entre el lanzamiento del juego '{juego1[0]}' y el lanzamiento del juego '{juego2[0]}' han transcurrido {diferencia_años} años y {diferencia_dias} dias"
+
+
+
+#EJEMPLO DE USO
+
+juego1 = ('The Legendo of Zelda', "21-02-1986")
+juego2 = ('Echoes of Wisdom', "26-09-2024")
+
+print(zelda(juego1, juego2)
+#Entre el lanzamiento del juego 'The Legend of Zelda' y el lanzamiento del juego 'Echoes of Wisdom' han transcurrido 38 años y 227 dias
+
+  
